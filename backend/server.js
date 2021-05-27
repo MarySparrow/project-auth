@@ -13,7 +13,7 @@ mongoose.Promise = Promise
 
 dotenv.config()
 
-const Thought = mongoose.model('Thought', {
+const Grocery = mongoose.model('Grocery', {
   message: String
 })
 const User = mongoose.model('User', {
@@ -51,17 +51,17 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
-app.get('/thoughts', authenticateUser)
-app.get('/thoughts', async (req, res) => {
-  const thoughts = await Thought.find()
-  res.json({ success: true, thoughts})
+app.get('/grocery', authenticateUser)
+app.get('/grocery', async (req, res) => {
+  const grocery = await Grocery.find()
+  res.json({ success: true, grocery})
 })
-app.post('/thoughts', authenticateUser)
-app.post('/thoughts', async (req, res) => {
+app.post('/grocery', authenticateUser)
+app.post('/grocery', async (req, res) => {
   const { message } = req.body
   try {
-    const newThought = await new Thought({ message }).save()
-    res.json({ success: true, newThought})
+    const newGrocery = await new Grocery({ message }).save()
+    res.json({ success: true, newGrocery})
   } catch (error) {
     res.status(400).json({ success: false, message: 'Invalid request', error })
   }
