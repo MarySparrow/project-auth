@@ -6,12 +6,14 @@ import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
 
-const mongoUrl = process.env.MONGO_URL || `mongodb+srv://${process.env.USER_ID}:${process.env.API_KEY}@cluster0.bvwog.mongodb.net/shoppingList?retryWrites=true&w=majority`
+dotenv.config()
+
+const mongoUrl = process.env.MONGO_URL || `mongodb+srv://${process.env.USER_ID}:${process.env.API_KEY}@cluster0.bvwog.mongodb.net/happyThoughts?retryWrites=true&w=majority`
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true , useCreateIndex: true})
 mongoose.Promise = Promise
 
 
-dotenv.config()
+
 
 const Grocery = mongoose.model('Grocery', {
   message: String
