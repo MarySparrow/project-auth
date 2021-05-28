@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import user from './reducers/user'
 import grocery from './reducers/grocery'
 
+import Header from './components/Header'
 import Login from './components/Login'
 import Main from './components/Main'
 
@@ -19,10 +20,12 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
+        <Header />
        <Switch>
         <Route exact path="/" component={Main}/>   
         <Route path="/login" component={Login}/>       
        </Switch>
+       {/* <Footer /> */}
       </Provider>
     </BrowserRouter>
   )

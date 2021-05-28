@@ -37,17 +37,20 @@ const Main = () => {
         } else {
           dispatch(grocery.actions.setErrors(data))
         }
-      }, [accessToken])
+      }, [accessToken, dispatch])
   })
-  console.log(groceryItems)
+  
   return (
-    <div>
-      <h1>Welcome to your Grocery shopping list</h1>
-      <p>Add items:</p>
-      <Link to="/login">To login</Link>
-      {groceryItems.map(grocery => (
-        <div key={grocery._id}>{grocery.message}</div>
-      ))}
+    <div className="wrapper">
+      <div className="shoppinglist">
+        <h1>Your shopping list</h1>
+        <p>Add items:</p>
+        <Link to="/login">To login</Link>
+        {groceryItems.map(grocery => (
+          <div key={grocery._id}>{grocery.message}</div>
+        ))}
+      </div>
+      <div className="photo"></div>
     </div>
   )
 }
